@@ -24,6 +24,29 @@ const server = () => {
     }
   );
 
+  server.post('/api/todo/clear', async (req, res) => {
+      try {
+        await todoService.clearTodos();
+        res.status(201).send();
+      } catch (e) {
+        console.error(e);
+        res.status(500).send();
+      }
+    }
+  );
+
+  server.delete('/api/todo/:deleteIndex', async (req, res) => {
+    const index = parseInt(req.params.deleteIndex);
+    try {
+      await todoService.deleteTodo(index);
+      res.status(201).send();
+    } catch (e) {
+      console.error(e);
+      res.status(500).send();
+    }
+  }
+);
+
   return server;
 };
 module.exports = server;

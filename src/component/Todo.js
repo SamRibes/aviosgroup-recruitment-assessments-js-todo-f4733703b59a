@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const Todo = ({ todo }) => (
+const Todo = ({ todo, onDelete }) => (
   <li className="todo-item">
-    <span
-      className="todo-item__text"
-    >
+    <span className="todo-item__text">
+      <button onClick={onDelete}>Delete Item</button>
       {todo}
     </span>
   </li>
