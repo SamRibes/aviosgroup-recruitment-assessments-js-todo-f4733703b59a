@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Todo from "./Todo";
+import TodoControl from "./TodoControl";
 import {fetchTodos, addTodo, deleteTodo, clearTodos } from "../actions";
 import {connect} from "react-redux";
 
@@ -26,7 +27,7 @@ class TodoList extends Component {
       }
     }
 
-    const handleAddToDoOnEnter = (event) => event.code === "Enter" ? handleAddToDo() : null
+    const handleInputEnter = (event) => event.code === "Enter" ? handleAddToDo() : null
 
     const handleDelete = (index) => {
       this.props.deleteTodo(index);
@@ -38,13 +39,13 @@ class TodoList extends Component {
 
     return (
       <>
-        <button onClick={handleClearTodos}>Clear Todos</button>
-        <div className="add-todo">
-          <button onClick={handleAddToDo}>Add Todo</button>
-          <input type="text" value={this.state.inputValue} onChange={handleInputChange} 
-            onKeyUp={handleAddToDoOnEnter}
-          />
-        </div>
+        <TodoControl
+          inputValue={this.state.inputValue}
+          onInputChange={handleInputChange}
+          onClearTodos={handleClearTodos}
+          onAddToDo={handleAddToDo}
+          onInputEnter={handleInputEnter}
+        />
         <ul className="todo-list">
           {todos && todos.length
             ? todos.map((todo, index) => {
