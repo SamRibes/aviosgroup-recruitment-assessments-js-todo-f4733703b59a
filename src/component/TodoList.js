@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import Todo from "./Todo";
-import TodoControl from "./TodoControl";
-import {fetchTodos, addTodo, deleteTodo, clearTodos } from "../actions";
 import {connect} from "react-redux";
+import {fetchTodos, addTodo, deleteTodo, clearTodos } from "../actions";
+import TodoControl from "./TodoControl";
+import Todo from "./Todo";
 
 class TodoList extends Component {
   state = {
@@ -55,8 +55,6 @@ class TodoList extends Component {
                 </div>
               )
             })
-
-
             : "No todos, yay!"}
         </ul> 
       </>
