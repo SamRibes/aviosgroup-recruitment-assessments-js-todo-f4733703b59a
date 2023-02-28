@@ -1,3 +1,6 @@
+
+I had some fun with the backend stuff and added extra endpoints for deleting and clearing.
+
 # TODO App
 
 ## The task
